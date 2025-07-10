@@ -6,6 +6,8 @@ This is only really a proof of concept (for now 👀) and is not meant to be use
 
 ## Setup
 
+Make sure you have [Bun](https://bun.sh) installed.
+
 1. Clone the repository
 2. Create a `.env` file in the root directory with the following content:
 
