@@ -11,11 +11,10 @@ Make sure you have [Bun](https://bun.sh) installed.
 1. Clone the repository
 2. Create a `.env` file in the root directory with the following content:
 
-```env
+````env
 DISCORD_TOKEN=your-discord-token
 APPLICATION_ID=your-application-id
 V0_API_KEY=your-v0-api-key
-ACTIVE_CHANNEL_ID=your-active-channel-id # this is the channel where the bot will be active and generate projects every time it's mentioned
 ```
 
 Get a Discord token [here](https://discord.com/developers/applications).
@@ -27,6 +26,12 @@ Get your v0 API key [here](https://v0.dev/chat/settings/keys).
 
 Run `bun run start` to start the bot & send any message in the active channel to generate a v0 project.
 
+The bot expects to have permissions to create chnanels, though it's recommended to give it Administrator just to not have to worry about specific permissions.
+
+Run `/init` or create a category named `v0` to initialize the bot.
+
+Run `/create` to create a v0 project, then ask any follow ups in the channel it made. Ensure you do not change the channel's description/topic, it's used to store the chat ID to avoid setting up a DB for this proof of concept.
+
 ## Todo
 
 - [ ] Add follow-up prompts
@@ -36,3 +41,4 @@ Run `bun run start` to start the bot & send any message in the active channel to
 ## Shameless plug
 
 Follow me on [Twitter](https://twitter.com/ex0t1clol) :)
+````
