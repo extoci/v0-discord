@@ -42,7 +42,3 @@ Run `/create` to create a v0 project, then ask any follow ups in the channel it 
 ## Shameless plug
 
 Follow me on [Twitter](https://twitter.com/ex0t1clol) :)
-
-```
-
-```
