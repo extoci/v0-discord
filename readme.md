@@ -21,6 +21,7 @@ Get a Discord token [here](https://discord.com/developers/applications).
 Get your v0 API key [here](https://v0.dev/chat/settings/keys).
 
 3. Run `bun install` to install the dependencies.
+4. Run `bun run deploy` to deploy commands to Discord.
 
 ## Usage
 
