@@ -26,7 +26,11 @@ export default {
 
 		console.log(chatId, message.cleanContent);
 
-		const newChat = await followUp(chatId, message.cleanContent);
+		const newChat = await followUp(
+			chatId,
+			message.cleanContent,
+			message.attachments.map((a) => a.url), // need to clean up
+		);
 
 		progressMsg.edit({
 			content: '',

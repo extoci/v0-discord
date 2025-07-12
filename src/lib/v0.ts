@@ -16,7 +16,7 @@ export default async function createChat(prompt: string) {
 	return chat;
 }
 
-export async function followUp(chatId: string, prompt: string) {
+export async function followUp(chatId: string, prompt: string, attachments?: string[]) {
 	const chat = await v0.chats.createMessage({
 		chatId,
 		message: prompt,
@@ -25,6 +25,7 @@ export async function followUp(chatId: string, prompt: string) {
 			thinking: true,
 			imageGenerations: false,
 		},
+		attachments: attachments?.map((a) => ({ url: a })), // needs to be cleaned up
 	});
 
 	console.log(`Followed up on chat ${chatId} with prompt:`, prompt);
