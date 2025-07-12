@@ -1,37 +1,39 @@
-import { EmbedBuilder, Events } from 'discord.js';
+import { ChannelType, EmbedBuilder, Events } from 'discord.js';
 import type { Event } from './index.ts';
-import createChat from '../lib/create-chat.ts';
+import { followUp } from '../lib/v0.ts';
 
 export default {
 	name: Events.MessageCreate,
 	async execute(message) {
 		// these are all useless, just don't want typescript to complain
 		if (!message.inGuild()) return;
-		if (!message.channel.isTextBased()) return;
+		if (message.channel.type !== ChannelType.GuildText) return;
 		if (!message.channel.isSendable()) return;
 		// now we're getting to the useful stuff
-		if (message.channel.id !== process.env.ACTIVE_CHANNEL_ID) return;
-		if (!message.mentions.users.has(message.client.user.id)) return;
+
+		// this is depercated because of the new category based approach
+		// if (message.channel.id !== process.env.ACTIVE_CHANNEL_ID) return;
+		// if (!message.mentions.users.has(message.client.user.id)) return;
+
+		if (message.channel.parent?.name !== 'v0') return;
 		if (message.author.bot) return;
-		const isThereSomethingAfterMention =
-			message.content.replace(message.mentions.users.first()!.toString(), '').trim().length > 0;
+		if (!message.content) return;
 
-		if (!isThereSomethingAfterMention) {
-			await message.reply('Please provide a prompt.');
-			return;
-		}
+		const progressMsg = await message.channel.send('Sending follow-up to v0...');
 
-		const progressMsg = await message.channel.send('Preparing to generate a v0 project...');
+		// get the chat id from the channel topic
+		const chatId = message.channel.topic!; // type assertion because this is a proof of concept!!
 
-		const chat = await createChat(message.cleanContent);
+		console.log(chatId, message.cleanContent);
 
-		await progressMsg.edit({
-			content: '',
+		const newChat = await followUp(chatId, message.cleanContent);
+
+		progressMsg.edit({
 			embeds: [
 				new EmbedBuilder()
-					.setURL(chat.url)
-					.setTitle('Project created!')
-					.setDescription(`View the generated project by clicking [here](${chat.demo}).`),
+					.setURL(newChat.url)
+					.setTitle('Follow-up sent!')
+					.setDescription(`View the updated project by clicking [here](${newChat.demo}).`),
 			],
 		});
 	},
