@@ -29,6 +29,7 @@ export default {
 		const newChat = await followUp(chatId, message.cleanContent);
 
 		progressMsg.edit({
+			content: '',
 			embeds: [
 				new EmbedBuilder()
 					.setURL(newChat.url)
