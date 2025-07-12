@@ -34,9 +34,9 @@ Run `/create` to create a v0 project, then ask any follow ups in the channel it 
 
 ## Todo
 
-- [ ] Add follow-up prompts
-- [ ] Vercel integration for production deployments
+- [x] Add follow-up prompts
 - [ ] Show the model's output in Discord, not just the URL
+- [ ] Support attachments and image generation from v0
 
 ## Shameless plug
 
