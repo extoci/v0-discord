@@ -11,7 +11,7 @@ Make sure you have [Bun](https://bun.sh) installed.
 1. Clone the repository
 2. Create a `.env` file in the root directory with the following content:
 
-````env
+```env
 DISCORD_TOKEN=your-discord-token
 APPLICATION_ID=your-application-id
 V0_API_KEY=your-v0-api-key
@@ -41,4 +41,7 @@ Run `/create` to create a v0 project, then ask any follow ups in the channel it 
 ## Shameless plug
 
 Follow me on [Twitter](https://twitter.com/ex0t1clol) :)
-````
+
+```
+
+```
